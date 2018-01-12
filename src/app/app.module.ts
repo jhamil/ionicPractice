@@ -11,8 +11,11 @@ import { TabsPage } from '../pages/tabs/tabs';*/
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { Contacts } from '@ionic-native/contacts';
+import { ComponentsModule } from '../components/components.module';
+import { TransferProvider } from '../providers/transfer/transfer';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +23,8 @@ import { Contacts } from '@ionic-native/contacts';
   ],
   imports: [
     BrowserModule,
+    ComponentsModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -30,7 +35,8 @@ import { Contacts } from '@ionic-native/contacts';
     StatusBar,
     SplashScreen,
     Contacts,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    TransferProvider
   ]
 })
 export class AppModule {}

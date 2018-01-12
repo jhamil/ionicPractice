@@ -25,14 +25,15 @@ export class SyncContactPage {
     console.log('ionViewDidLoad SyncContactPage');
   }
 
-  cargarListaContactos(){
+  cargarListaContactos() {
     this.contacts.find(["*"])
     .then(res => {
       console.log({funcion:'CargarListaContactos',res:res})
       let datosMostar:any[]=[];
       res.map((item) =>{
-        if(item.displayName != null && item.photos != null && item.phoneNumbers != null){
-          datosMostar.push({displayName:item.displayName,phoneNumbers:item.phoneNumbers})
+        console.log(item);
+        if(item.displayName != null && item.phoneNumbers != null){
+          datosMostar.push({displayName:item.displayName, phoneNumbers:item.phoneNumbers})
         }        
       })
       console.log({funcion:'CargarListaContactos',datosMostar:datosMostar})
@@ -40,6 +41,10 @@ export class SyncContactPage {
     },error => {
       console.log({error:error})
     })
+  }
+
+  addContactsToList() {
+    this.navCtrl.push('UserProfilePage');
   }
 
 }
